@@ -1,0 +1,628 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงพยาบาลรักษามะเร็ง</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+    
+    <!-- W3 CSS template -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <style>
+    #mapid {
+    height: 1330px;
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="w3-row">
+        <div id="mapid" class="w3-half"></div>
+        <div id="content" class="w3-half">
+        <table class="w3-table w3-striped">
+        <tr>
+        <th>โรงพยาบาล</th>
+        <th>ภาค</th>
+        </tr>
+        <tr>
+        <td>น้ำตก A</td>
+        <td>ธรรมชาติ</td>
+        </tr>
+        </table>
+        </div>
+        </div>
+<script>
+    var map = L.map("mapid").setView([14.407236445237777, 100.71421662976555], 6);
+ 
+ var osm = L.tileLayer(
+ "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+ ).addTo(map);
+ var gsat = L.tileLayer(
+ "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+ ).addTo(map);
+ var OpenStreetMap_HOT = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png").addTo(map);
+ 
+ var baseMaps = {
+ OSM: osm,
+GoogleSat: gsat,
+StreetMap_HOT: OpenStreetMap_HOT,
+ };
+ 
+ var nonthaburi = {
+    
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมหาราชนครเชียงใหม่",
+        "ภาค": "ภาคเหนือ"
+      },
+      "geometry": {
+        "coordinates": [
+          98.97432307937851,
+          18.789601296166026
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลนครพิงค์ จ.เชียงใหม่",
+        "ภาค": "ภาคเหนือ"
+      },
+      "geometry": {
+        "coordinates": [
+          98.96803400000118,
+          18.851655969520948
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลลำปาง",
+        "ภาค": "ภาคเหนือ"
+      },
+      "geometry": {
+        "coordinates": [
+          99.50671585091828,
+          18.287262256461233
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลพุทธชินราช จ.พิษณุโลก",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.26371272276566,
+          16.806382021688847
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมหาวิทยาลัยนเรศวร",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.18936871164198,
+          16.748565460906917
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลรังวิทยาพิษณุโลก",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.26897866423371,
+          16.819481101807085
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลศรีนครินทร์ จ.ขอนแก่น",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          102.83022088606015,
+          16.468170674270908
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลขอนแก่น",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          102.84901999999937,
+          16.429488942035462
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลร้อยเอ็ด",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          103.65314299999977,
+          16.04762393803736
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมะเร็งอุดรธานี",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          102.79007081574883,
+          17.418117902068374
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลสกลนคร",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          104.15756563638342,
+          17.161573023305365
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมหาราชนครราชสีมา",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          102.09948232275349,
+          14.985022611312587
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลสุรินทร์",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          103.50326840833475,
+          14.876529769726858
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมะเร็งอุบลราชธานี",
+        "ภาค": "ภาคอีสาน"
+      },
+      "geometry": {
+        "coordinates": [
+          104.82077881349096,
+          15.278131430256579
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลศิริราช",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.48544316336046,
+          13.757865882500582
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลจุฬาลงกรณ์",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.5358311904755,
+          13.731315510152953
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลรามาธิบดี",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.52681399999932,
+          13.766520995431136
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลราชวิถี",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.5362858134929,
+          13.76397541631519
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลภูมิพลอดุลยเดช",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.61800328836108,
+          13.90885736051365
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลพระมงกุฎเกล้า",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.53434078835971,
+          13.767392574881796
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลวชิรพยาบาล",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.50891098280357,
+          13.780493916189045
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลจุฬาภรณ์",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.57830654232828,
+          13.880617917083725
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลศูนย์มะเร็งกรุงเทพมหานคร",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.5438801865119,
+          13.779472336236239
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "สถาบันมะเร็งแห่งชาติ",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.53140000000127,
+          13.76677765420159
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมงกุฎวัฒนะ",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.5617930846571,
+          13.893541427517448
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลสวรรค์ประชารักษ์",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.13835565294107,
+          15.706854355310881
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมะเร็งลพบุรี",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.6521369458863,
+          14.806800951958238
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมหาวชิราลงกรณธัญบุรี",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.83665972883523,
+          14.068775325807579
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.61385677073218,
+          14.0740146830057
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลราชบุรี",
+        "ภาค": "ภาคตะวันตก"
+      },
+      "geometry": {
+        "coordinates": [
+          99.81655132275267,
+          13.531300965667086
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลสมุทรสาคร",
+        "ภาค": "ภาคกลาง"
+      },
+      "geometry": {
+        "coordinates": [
+          100.27328289814449,
+          13.555535493996373
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมะเร็งชลบุรี",
+        "ภาค": "ภาคตะวันออก"
+      },
+      "geometry": {
+        "coordinates": [
+          100.95290384788967,
+          13.344162311542476
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลพระปกเกล้า จ.จันทบุรี",
+        "ภาค": "ภาคตะวันออก"
+      },
+      "geometry": {
+        "coordinates": [
+          102.10217427116379,
+          12.604405631147529
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลสงขลานครินทร์",
+        "ภาค": "ภาคใต้"
+      },
+      "geometry": {
+        "coordinates": [
+          100.4949279197395,
+          7.006432126319041
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมะเร็งสุราษฎร์ธานี",
+        "ภาค": "ภาคใต้"
+      },
+      "geometry": {
+        "coordinates": [
+          99.3883329828056,
+          8.978629491235978
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลมหาราชนครศรีธรรมราช",
+        "ภาค": "ภาคใต้"
+      },
+      "geometry": {
+        "coordinates": [
+          99.96402730531531,
+          8.436509815205923
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "โรงพยาบาล": "โรงพยาบาลหาดใหญ่",
+        "ภาค": "ภาคใต้"
+      },
+      "geometry": {
+        "coordinates": [
+          100.46810050000045,
+          7.016711518980102
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}
+  
+
+  // interaction by mouseover
+  var tourLayer = L.geoJSON(nonthaburi, {
+ pointToLayer: function (feature, latlng) {
+ return L.marker(latlng).bindPopup(feature.properties.โรงพยาบาล);
+ },
+ onEachFeature: function (feature, layer) {
+ layer.on("mouseover", function () {
+ document
+ .getElementById(feature.properties.โรงพยาบาล)
+ .classList.add("w3-red");
+ });
+ 
+ layer.on("mouseout", function () {
+ document
+ .getElementById(feature.properties.โรงพยาบาล)
+ .classList.remove("w3-red");
+ });
+ },
+ }).addTo(map);
+ 
+ var cont = "";
+ cont += "<table class='w3-table w3-striped'>";
+ cont += "<tr>";
+ cont += "<th>โรงพยาบาล</th>";
+ cont += "<th>ภาค</th>";
+ cont += "</tr>";
+ for (let i in nonthaburi.features) {
+ cont += "<tr id=" + nonthaburi.features[i].properties.โรงพยาบาล+ ">";
+ cont += "<td>" + nonthaburi.features[i].properties.โรงพยาบาล + "</td>";
+ cont += "<td>" + nonthaburi.features[i].properties.ภาค + "</td>";
+ cont += "</tr>";
+ }
+ cont += "</table>";
+ console.log(cont);
+ document.getElementById("content").innerHTML = cont;
+
+ var overlays = {Hospital: tourLayer};
+ //add leyer control
+ L.control.layers(baseMaps, overlays).addTo(map);
+</script>
+
+
+
+
+</body>
+</html>
